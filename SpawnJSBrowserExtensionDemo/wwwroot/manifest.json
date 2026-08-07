@@ -3,6 +3,9 @@
   "name": "SpawnJSBrowserExtensionDemo",
   "version": "1.0",
   "description": "SpawnJSBrowserExtensionDemo demonstrates SpawnDev.SpawnJS.BrowserExtension.",
+  "icons": {
+    "128": "app/icon-128.png"
+  },
   "content_security_policy": {
     "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
   },
