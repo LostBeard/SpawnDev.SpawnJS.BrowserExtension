@@ -1,0 +1,28 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<!-- Required to have wwwroot added to the output and available via _content folder -->
+	<Import Project="Microsoft.AspNetCore.StaticWebAssets.props" Condition="Exists('$(MSBuildThisFileDirectory).\Microsoft.AspNetCore.StaticWebAssets.props')" />
+	
+	<PropertyGroup>		
+		<!-- Optional explicit ';'-separated platform list. Empty (default) => derive from the
+		     manifest.<platform>.json partials in wwwroot, falling back to a single "browser" output when
+		     none exist. Set to "false" (or "0") to disable the extension assembly entirely. -->
+		<SpawnDevBrowserExtensionPlatforms Condition="'$(SpawnDevBrowserExtensionPlatforms)' == ''"></SpawnDevBrowserExtensionPlatforms>
+
+		<!-- Create a <platform>.zip next to each assembled platform folder (forward-slash entries). -->
+		<SpawnDevBrowserExtensionZip Condition="'$(SpawnDevBrowserExtensionZip)' == ''">true</SpawnDevBrowserExtensionZip>
+
+		<SpawnDevBrowserExtensionVerbose Condition="'$(SpawnDevBrowserExtensionVerbose)' == ''">false</SpawnDevBrowserExtensionVerbose>
+
+		<SpawnDevBrowserExtensionBuildAssetsPath Condition="'$(SpawnDevBrowserExtensionBuildAssetsPath)' == ''">wwwroot</SpawnDevBrowserExtensionBuildAssetsPath>
+		<SpawnDevBrowserExtensionBuildOutputPath Condition="'$(SpawnDevBrowserExtensionBuildOutputPath)' == ''">$(Configuration)Extension</SpawnDevBrowserExtensionBuildOutputPath>
+		<!--  -->
+		<_DebugSpawnDevBrowserExtensionBuildTasks Condition="'$(_DebugSpawnDevBrowserExtensionBuildTasks)' == ''">false</_DebugSpawnDevBrowserExtensionBuildTasks>
+		<_SpawnDevBrowserExtensionBuildTasksAssembly Condition="'$(_SpawnDevBrowserExtensionBuildTasksAssembly)' == ''">$(MSBuildThisFileDirectory)..\tasks\netstandard2.0\SpawnDev.SpawnJS.BrowserExtension.Build.dll</_SpawnDevBrowserExtensionBuildTasksAssembly>
+	</PropertyGroup>
+
+	<UsingTask TaskName="SpawnDev.SpawnJS.BrowserExtension.Build.Tasks.PostBuildTask" AssemblyFile="$(_SpawnDevBrowserExtensionBuildTasksAssembly)" />
+	
+	<UsingTask TaskName="SpawnDev.SpawnJS.BrowserExtension.Build.Tasks.PostPublishTask" AssemblyFile="$(_SpawnDevBrowserExtensionBuildTasksAssembly)" />
+
+</Project>

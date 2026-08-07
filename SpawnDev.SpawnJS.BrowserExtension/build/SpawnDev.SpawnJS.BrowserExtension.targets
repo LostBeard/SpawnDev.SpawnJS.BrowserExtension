@@ -1,0 +1,86 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<PropertyGroup>
+		<_SpawnDevBrowserExtensionBuildContentDirectory>$(MSBuildThisFileDirectory)..\buildcontent</_SpawnDevBrowserExtensionBuildContentDirectory>
+	</PropertyGroup>
+
+	<Target Name="SpawnDevBrowserExtensionBuildBeforeTargetsBeforeBuild" BeforeTargets="BeforeBuild">
+		<!-- <Message Importance="high" Text="********************** SpawnDev.SpawnJS.SpawnDevBrowserExtension BeforeTargets BeforeBuild" /> -->
+	</Target>
+	<Target Name="SpawnDevBrowserExtensionBuildAfterTargetsBeforeBuild" AfterTargets="BeforeBuild">
+		<!-- <Message Importance="high" Text="********************** SpawnDev.SpawnJS.SpawnDevBrowserExtension AfterTargets BeforeBuild" /> -->
+	</Target>
+	
+	<Target Name="SpawnDevBrowserExtensionBuildBeforeTargetsAfterBuild" BeforeTargets="AfterBuild">
+		<!-- <Message Importance="high" Text="********************** SpawnDev.SpawnJS.SpawnDevBrowserExtension BeforeTargets AfterBuild" /> -->
+	</Target>
+	<Target Name="SpawnDevBrowserExtensionBuildAfterTargetsAfterBuild" AfterTargets="AfterBuild">
+		<!-- <Message Importance="high" Text="********************** SpawnDev.SpawnJS.SpawnDevBrowserExtension AfterTargets AfterBuild" /> -->
+		<PropertyGroup>
+			<_SpawnDevBrowserExtensionBuild_Project_Assets_Directory>$(ProjectDir)$(SpawnDevBrowserExtensionBuildAssetsPath)</_SpawnDevBrowserExtensionBuild_Project_Assets_Directory>
+			<_SpawnDevBrowserExtensionBuild_Project_Assets_ManifestJson_FilePath>$(_SpawnDevBrowserExtensionBuild_Project_Assets_Directory)\manifest.json</_SpawnDevBrowserExtensionBuild_Project_Assets_ManifestJson_FilePath>
+			<_SpawnDevBrowserExtensionBuild_Project_BuildOutput_Assets_Directory>$(TargetDir)$(SpawnDevBrowserExtensionBuildAssetsPath)</_SpawnDevBrowserExtensionBuild_Project_BuildOutput_Assets_Directory>
+			<_SpawnDevBrowserExtensionBuild_Project_BuildOutput_SpawnDevBrowserExtensionBuild_Directory>$(TargetDir)$(SpawnDevBrowserExtensionBuildOutputPath)</_SpawnDevBrowserExtensionBuild_Project_BuildOutput_SpawnDevBrowserExtensionBuild_Directory>
+			<_SpawnDevBrowserExtensionBuild_Project_BuildOutput_SpawnDevBrowserExtensionBuild_OriginalFramework_Directory>$(_SpawnDevBrowserExtensionBuild_Project_BuildOutput_SpawnDevBrowserExtensionBuild_Directory)\_framework</_SpawnDevBrowserExtensionBuild_Project_BuildOutput_SpawnDevBrowserExtensionBuild_OriginalFramework_Directory>
+			<!-- StaticWebAssets - The StaticWebAssets manifest is created by the dotnet SDK and read by the DevServer.
+				Source:
+				- Current/.Net 8 https://github.com/dotnet/aspnetcore/blob/main/src/Components/WebAssembly/DevServer/src/Server/Program.cs
+				- .Net 7 https://github.com/dotnet/aspnetcore/blob/v7.0.12/src/Components/WebAssembly/DevServer/src/Server/Program.cs
+				- .Net 6 https://github.com/dotnet/aspnetcore/blob/v6.0.23/src/Components/WebAssembly/DevServer/src/Server/Program.cs
+			-->
+			<_SpawnDevBrowserExtensionBuild_Project_BuildOutput_StaticWebAssets_Manifest_FilePath>$(TargetDir)$(ProjectName).staticwebassets.runtime.json</_SpawnDevBrowserExtensionBuild_Project_BuildOutput_StaticWebAssets_Manifest_FilePath>
+		</PropertyGroup>
+	</Target>
+
+	<Target Name="SpawnDevBrowserExtensionBuildBeforeTargetsBuild" BeforeTargets="Build">
+		<!-- <Message Importance="high" Text="********************** SpawnDev.SpawnJS.SpawnDevBrowserExtension BeforeTargets Build" /> -->
+	</Target>
+	<Target Name="SpawnDevBrowserExtensionBuildAfterTargetsBuild" AfterTargets="Build">
+		<!-- <Message Importance="high" Text="********************** SpawnDev.SpawnJS.SpawnDevBrowserExtension AfterTargets Build" /> -->
+		<PostBuildTask
+			DebugSpawnDevBrowserExtensionBuildTasks="$(_DebugSpawnDevBrowserExtensionBuildTasks)"
+			Verbose="$(SpawnDevBrowserExtensionVerbose)"
+			/>
+	</Target>
+
+	<Target Name="SpawnDevBrowserExtensionBuildBeforeTargetsAfterPublish" BeforeTargets="AfterPublish">
+		<!-- <Message Importance="high" Text="********************** SpawnDev.SpawnJS.SpawnDevBrowserExtension BeforeTargets AfterPublish" /> -->
+	</Target>
+	<Target Name="SpawnDevBrowserExtensionBuildAfterTargetsAfterPublish" AfterTargets="AfterPublish">
+		<!-- <Message Importance="high" Text="********************** SpawnDev.SpawnJS.SpawnDevBrowserExtension AfterTargets AfterPublish" /> -->
+	</Target>
+	<!-- Assemble the extension(s) from the published wwwroot. This MUST run after the SpawnJS.WebWorkers
+	     publish bundle, which writes main.classic.js/main.module.js into the publish wwwroot; otherwise the
+	     copy misses them and the background worker's importScripts('main.classic.js') 404s.
+
+	     A single AfterTargets that lists both AfterPublish AND the bundle does NOT order deterministically
+	     (both share the AfterPublish trigger and MSBuild may run us first). So the real work lives in one
+	     target that runs at most once, and two trigger targets pull it in at the correct point:
+	       - after the bundle, when the classic bundle is active (the app case), and
+	       - after AfterPublish, only when the bundle is NOT active (no bundle to wait for). -->
+	<Target Name="_SpawnDevBrowserExtensionAssemble">
+		<PostPublishTask
+			OutputPath="$(PublishDir)"
+			PublishMode="true"
+			DebugSpawnDevBrowserExtensionBuildTasks="$(_DebugSpawnDevBrowserExtensionBuildTasks)"
+			ExtensionPlatforms="$(SpawnDevBrowserExtensionPlatforms)"
+			Zip="$(SpawnDevBrowserExtensionZip)"
+			Verbose="$(SpawnDevBrowserExtensionVerbose)"
+			/>
+	</Target>
+
+	<!-- WebWorkers classic bundle active: assemble AFTER the bundle (deterministic single-edge ordering). -->
+	<Target Name="_SpawnDevBrowserExtensionAssembleAfterBundle"
+			AfterTargets="SpawnJSWebWorkersPublishBundle"
+			DependsOnTargets="_SpawnDevBrowserExtensionAssemble" />
+
+	<!-- No classic bundle (e.g. an extension that does not use SpawnJS.WebWorkers): assemble after publish. -->
+	<Target Name="_SpawnDevBrowserExtensionAssembleAfterPublish"
+			AfterTargets="AfterPublish"
+			Condition="'$(SpawnJSWebWorkersClassicBundle)' != 'true'"
+			DependsOnTargets="_SpawnDevBrowserExtensionAssemble" />
+
+	<Target Name="SpawnDevBrowserExtensionBuildAfterTargetsAfterClean" AfterTargets="AfterClean">
+		<!-- <Message Importance="high" Text="********************** SpawnDev.SpawnJS.SpawnDevBrowserExtension AfterTargets AfterClean" /> -->
+	</Target>
+</Project>

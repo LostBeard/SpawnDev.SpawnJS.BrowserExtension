@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk.WebAssembly">
+
+	<!-- SpawnDev.SpawnJS.BrowserExtension build integration.
+	     It consumes the library via ProjectReference (dev inner loop). A ProjectReference does NOT
+	     auto-import the package's build/ props+targets, so they are imported manually below. -->
+	<Import Project="..\SpawnDev.SpawnJS.BrowserExtension\build\SpawnDev.SpawnJS.BrowserExtension.props" />
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<!-- Disable compression (optional, based on use case) -->
+		<CompressionEnabled>false</CompressionEnabled>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- Direct reference so this WASM app gets the SpawnJS.WebWorkers build targets that produce
+		     main.classic.js (the background service worker loads it via importScripts). -->
+		<PackageReference Include="SpawnDev.SpawnJS.WebWorkers" Version="1.0.6" />
+		<ProjectReference Include="..\SpawnDev.SpawnJS.BrowserExtension\SpawnDev.SpawnJS.BrowserExtension.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
+
+	<Import Project="..\SpawnDev.SpawnJS.BrowserExtension\build\SpawnDev.SpawnJS.BrowserExtension.targets" />
+
+</Project>

@@ -1,0 +1,77 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+	<PropertyGroup>
+		<TargetFrameworks>net10.0</TargetFrameworks>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Version>1.0.0-local.1</Version>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<EmbedAllSources>true</EmbedAllSources>
+		<DebugType>Embedded</DebugType>
+		<Title>SpawnDev.SpawnJS.BrowserExtension</Title>
+		<Authors>LostBeard</Authors>
+		<Description>Create Manifest V3 web browser extensions using .Net WebAssembly</Description>
+		<PackageProjectUrl>https://github.com/LostBeard/SpawnDev.SpawnJS.BrowserExtension</PackageProjectUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+		<PackageIcon>icon-128.png</PackageIcon>
+		<RepositoryUrl>https://github.com/LostBeard/SpawnDev.SpawnJS.BrowserExtension.git</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>DotNetWebAssembly;BrowserExtension</PackageTags>
+		<NoPackageAnalysis>true</NoPackageAnalysis>
+		<EnableDefaultCompileItems>true</EnableDefaultCompileItems>
+		<IsPackable>true</IsPackable>
+		
+		<!-- Serve wwwroot at / -->
+		<StaticWebAssetBasePath Condition="'$(StaticWebAssetBasePath)' == ''">/</StaticWebAssetBasePath>
+
+		<!-- Generated CSS will be fingerprinted if not disabled -->
+		<StaticWebAssetFingerprintingEnabled>false</StaticWebAssetFingerprintingEnabled>
+		<StaticWebAssetsFingerprintContent>false</StaticWebAssetsFingerprintContent>
+		<!-- Disable compression (optional, based on use case) -->
+		<CompressionEnabled>false</CompressionEnabled>
+	</PropertyGroup>
+
+	<ItemGroup>
+
+		<Compile Remove="buildcontent\**" />
+		<Content Remove="buildcontent\**" />
+		<EmbeddedResource Remove="buildcontent\**" />
+		<None Remove="buildcontent\**" />
+
+		<Compile Remove="tasks\**" />
+		<Content Remove="tasks\**" />
+		<EmbeddedResource Remove="tasks\**" />
+		<None Remove="tasks\**" />
+
+		<Content Include="build\**">
+			<Pack>true</Pack>
+			<PackagePath>build</PackagePath>
+		</Content>
+		<Content Include="buildcontent\**">
+			<Pack>true</Pack>
+			<PackagePath>buildcontent</PackagePath>
+		</Content>
+		<Content Include="tasks\**">
+			<Pack>true</Pack>
+			<PackagePath>tasks</PackagePath>
+		</Content>
+	</ItemGroup>
+	
+	<ItemGroup>
+		<None Include="Images\icon-128.png" Pack="true" PackagePath="\" />
+		<None Include="..\README.md" Pack="true" PackagePath="\" />
+		<None Include="..\LICENSE.txt" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="SpawnDev.SpawnJS" Version="1.1.8" />
+		<PackageReference Include="SpawnDev.SpawnJS.WebWorkers" Version="1.0.6" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
+
+</Project>

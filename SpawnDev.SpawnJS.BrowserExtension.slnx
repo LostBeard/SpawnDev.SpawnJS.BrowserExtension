@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="SpawnDev.SpawnJS.BrowserExtension.Build/SpawnDev.SpawnJS.BrowserExtension.Build.csproj" />
+  <Project Path="SpawnDev.SpawnJS.BrowserExtension/SpawnDev.SpawnJS.BrowserExtension.csproj">
+    <BuildDependency Project="SpawnDev.SpawnJS.BrowserExtension.Build/SpawnDev.SpawnJS.BrowserExtension.Build.csproj" />
+  </Project>
+  <Project Path="SpawnJSBrowserExtensionDemo/SpawnJSBrowserExtensionDemo.csproj" />
+</Solution>
