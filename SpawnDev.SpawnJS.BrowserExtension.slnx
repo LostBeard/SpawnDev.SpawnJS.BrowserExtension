@@ -1,4 +1,10 @@
 <Solution>
+  <Folder Name="/Examples/">
+    <Project Path="Examples/TolerableTubeSimple/TolerableTubeSimple.csproj" Id="7a66e38b-86bf-4a49-8edd-dddd45d48fdd" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+  </Folder>
   <Project Path="SpawnDev.SpawnJS.BrowserExtension.Build/SpawnDev.SpawnJS.BrowserExtension.Build.csproj" />
   <Project Path="SpawnDev.SpawnJS.BrowserExtension/SpawnDev.SpawnJS.BrowserExtension.csproj">
     <BuildDependency Project="SpawnDev.SpawnJS.BrowserExtension.Build/SpawnDev.SpawnJS.BrowserExtension.Build.csproj" />

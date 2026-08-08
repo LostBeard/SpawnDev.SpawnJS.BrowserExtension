@@ -1,0 +1,16 @@
+﻿using SpawnDev;
+using SpawnDev.SpawnJS;
+
+namespace TolerableTubeSimple.Services
+{
+    public class AppService(SpawnJSRuntime JS) : IAsyncBackgroundService
+    {
+        Task? _ready = null;
+        public Task Ready => _ready ??= InitAsync();
+
+        async Task InitAsync()
+        {
+            Console.WriteLine($"TestService.InitAsync() {JS.GlobalScopeName}");
+        }
+    }
+}
