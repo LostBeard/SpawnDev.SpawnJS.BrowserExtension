@@ -66,8 +66,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="SpawnDev.SpawnJS" Version="1.1.9" />
-		<PackageReference Include="SpawnDev.SpawnJS.WebWorkers" Version="1.0.7" />
+		<PackageReference Include="SpawnDev.SpawnJS" Version="2.0.5" />
+		<PackageReference Include="SpawnDev.SpawnJS.WebWorkers" Version="2.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>
