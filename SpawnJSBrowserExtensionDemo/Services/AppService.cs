@@ -10,7 +10,7 @@ namespace SpawnJSBrowserExtensionDemo.Services
 
         async Task InitAsync()
         {
-            Console.WriteLine($"TestService.InitAsync() {JS.GlobalScopeName}");
+            Console.WriteLine($"TestService.InitAsync() {JS.GlobalScopeName} {JS.InstanceId}");
         }
     }
 }

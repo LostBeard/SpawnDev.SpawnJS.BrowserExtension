@@ -1,4 +1,4 @@
-﻿using Microsoft.JSInterop;
+﻿
 using SpawnDev.SpawnJS.JSObjects;
 
 namespace SpawnDev.SpawnJS.BrowserExtension
@@ -35,14 +35,14 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// <typeparam name="T"></typeparam>
         /// <param name="identifier"></param>
         /// <returns></returns>
-        public T GetGlobal<T>(string identifier) => JSRef!.Call<T>("getGlobal", identifier);
+        public T GetGlobal<T>(string identifier) => JSRef!.Call<string, T>("getGlobal", identifier);
         /// <summary>
         /// Call a method on the remote scope with a return value of type T
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="identifier"></param>
         /// <returns></returns>
-        public T CallGlobal<T>(string identifier) => JSRef!.Call<T>("callGlobal", identifier);
+        public T CallGlobal<T>(string identifier) => JSRef!.Call<string, T>("callGlobal", identifier);
         /// <summary>
         /// Call a method on the remote scope with no return value
         /// </summary>
@@ -54,7 +54,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// <typeparam name="T"></typeparam>
         /// <param name="identifier"></param>
         /// <returns></returns>
-        public Task<T> CallGlobalAsync<T>(string identifier) => JSRef!.CallAsync<T>("callGlobal", identifier);
+        public Task<T> CallGlobalAsync<T>(string identifier) => JSRef!.CallAsync<string, T>("callGlobal", identifier);
         /// <summary>
         /// Call an async method on the remote scope with no return value
         /// </summary>
@@ -72,20 +72,20 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// </summary>
         /// <param name="identifier"></param>
         /// <returns></returns>
-        public bool DeleteGlobal(string identifier) => JSRef!.Call<bool>("deleteGlobal", identifier);
+        public bool DeleteGlobal(string identifier) => JSRef!.Call<string, bool>("deleteGlobal", identifier);
         /// <summary>
         /// Releases all resources for the given proxied object
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public bool Release(SpawnJSObject obj) => JSRef!.Call<bool>("release", obj);
+        public bool Release(SpawnJSObject obj) => JSRef!.Call<SpawnJSObject, bool>("release", obj);
         /// <summary>
         /// Creates a selector string for the given element usable with document.querySelector()<br />
         /// The selector string may not be valid after any DOM changes but is useful as a reference to an element that can be passed across content scopes
         /// </summary>
         /// <param name="node"></param>
         /// <returns></returns>
-        public string MakeQuerySelector(Node node) => JSRef!.Call<string>("makeQuerySelector", node);
+        public string MakeQuerySelector(Node node) => JSRef!.Call<Node, string>("makeQuerySelector", node);
         /// <summary>
         /// Returns the same document element from the website side which allows accessing any owned Javascript variables
         /// </summary>

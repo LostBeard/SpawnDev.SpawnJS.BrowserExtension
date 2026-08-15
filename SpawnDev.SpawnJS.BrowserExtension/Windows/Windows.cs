@@ -1,4 +1,4 @@
-﻿using Microsoft.JSInterop;
+﻿
 using SpawnDev.SpawnJS.JSObjects;
 
 namespace SpawnDev.SpawnJS.BrowserExtension
@@ -17,24 +17,24 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// <summary>
         /// Gets details about a window, given its ID.
         /// </summary>
-        public Task<Window?> Get(int windowId, GetInfo details) => JSRef!.CallAsync<Window?>("get", windowId, details);
+        public Task<Window?> Get(int windowId, GetInfo details) => JSRef!.CallAsync<int, GetInfo, Window?>("get", windowId, details);
         /// <summary>
         /// Gets the current window.
         /// </summary>
         /// <param name="details"></param>
         /// <returns></returns>
-        public Task<Window?> GetCurrent(GetInfo details) => JSRef!.CallAsync<Window?>("getCurrent", details);
+        public Task<Window?> GetCurrent(GetInfo details) => JSRef!.CallAsync<GetInfo, Window?>("getCurrent", details);
         /// <summary>
         /// Gets the window that was most recently focused — typically the window 'on top'.
         /// </summary>
         /// <param name="details"></param>
         /// <returns></returns>
-        public Task<Window?> GetLastFocused(GetInfo details) => JSRef!.CallAsync<Window?>("getLastFocused", details);
+        public Task<Window?> GetLastFocused(GetInfo details) => JSRef!.CallAsync<GetInfo, Window?>("getLastFocused", details);
         /// <summary>
         /// Gets all windows.
         /// </summary>
         /// <param name="details"></param>
         /// <returns></returns>
-        public Task<Array<Window>?> GetAll(GetInfo details) => JSRef!.CallAsync<Array<Window>?>("getAll", details);
+        public Task<Array<Window>?> GetAll(GetInfo details) => JSRef!.CallAsync<GetInfo, Array<Window>?>("getAll", details);
     }
 }

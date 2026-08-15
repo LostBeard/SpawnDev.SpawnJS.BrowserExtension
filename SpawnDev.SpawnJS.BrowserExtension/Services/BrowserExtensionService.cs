@@ -8,8 +8,8 @@ namespace SpawnDev.SpawnJS.BrowserExtension.Services
         // chrome
         private static Lazy<Browser?> _Browser = new Lazy<Browser?>(() =>
         {
-            if (!_JS.IsUndefined("browser?.runtime")) return _JS.Get<Browser?>("browser");
-            else if (!_JS.IsUndefined("chrome?.runtime")) return _JS.Get<Browser?>("chrome");
+            if (_JS.Has("browser?.runtime")) return _JS.Get<Browser?>("browser");
+            else if (_JS.Has("chrome?.runtime")) return _JS.Get<Browser?>("chrome");
             return null;
         });
         private static Lazy<Runtime?> _Runtime = new Lazy<Runtime?>(() => _Browser.Value?.Runtime);

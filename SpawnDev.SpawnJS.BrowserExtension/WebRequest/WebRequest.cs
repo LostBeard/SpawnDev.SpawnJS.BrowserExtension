@@ -1,4 +1,4 @@
-﻿using Microsoft.JSInterop;
+﻿
 
 namespace SpawnDev.SpawnJS.BrowserExtension
 {

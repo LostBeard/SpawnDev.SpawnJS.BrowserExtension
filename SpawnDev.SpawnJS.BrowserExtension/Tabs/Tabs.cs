@@ -1,4 +1,6 @@
-﻿using Microsoft.JSInterop;
+﻿
+
+using SpawnDev.SpawnJS.JSObjects;
 
 namespace SpawnDev.SpawnJS.BrowserExtension
 {
@@ -23,20 +25,20 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// </summary>
         /// <param name="createProperties"></param>
         /// <returns></returns>
-        public Task<Tab> Create(CreateTabProperties createProperties) => JSRef!.CallAsync<Tab>("create", createProperties);
+        public Task<Tab> Create(CreateTabProperties createProperties) => JSRef!.CallAsync<CreateTabProperties, Tab>("create", createProperties);
 
         /// <summary>
         /// Retrieves details about the specified tab.
         /// </summary>
         /// <param name="tabId"></param>
         /// <returns></returns>
-        public Task<Tab> Get(int tabId) => JSRef!.CallAsync<Tab>("get", tabId);
+        public Task<Tab> Get(int tabId) => JSRef!.CallAsync<int, Tab>("get", tabId);
         /// <summary>
         /// Gets all tabs that have the specified properties, or all tabs if no properties are specified.
         /// </summary>
         /// <param name="queryInfo"></param>
         /// <returns></returns>
-        public Task<Tab[]> Query(TabQueryInfo queryInfo) => JSRef!.CallAsync<Tab[]>("query", queryInfo);
+        public Task<Tab[]> Query(TabQueryInfo queryInfo) => JSRef!.CallAsync<TabQueryInfo, Tab[]>("query", queryInfo);
         /// <summary>
         /// Sends a single message to the content script(s) in the specified tab.
         /// </summary>
@@ -44,7 +46,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// <param name="tabId"></param>
         /// <param name="message"></param>
         /// <returns></returns>
-        public Task<T> SendMessage<T>(int tabId, object message) => JSRef!.CallAsync<T>("sendMessage", tabId, message);
+        public Task<T> SendMessage<T>(int tabId, object message) => JSRef!.CallAsync<int, object, T>("sendMessage", tabId, message);
         /// <summary>
         /// Sends a single message to the content script(s) in the specified tab.
         /// </summary>
@@ -68,7 +70,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// <param name="message"></param>
         /// <param name="options"></param>
         /// <returns></returns>
-        public Task<T> SendMessage<T>(int tabId, object message, TabMessageOptions options) => JSRef!.CallAsync<T>("sendMessage", tabId, message, options);
+        public Task<T> SendMessage<T>(int tabId, object message, TabMessageOptions options) => JSRef!.CallAsync<int, object, TabMessageOptions, T>("sendMessage", tabId, message, options);
         /// <summary>
         /// Reload a tab.
         /// </summary>

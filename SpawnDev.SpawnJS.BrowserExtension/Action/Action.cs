@@ -1,4 +1,4 @@
-﻿using Microsoft.JSInterop;
+﻿
 using System.Text.Json.Serialization;
 
 namespace SpawnDev.SpawnJS.BrowserExtension
@@ -21,7 +21,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// Gets the browser action's title.
         /// </summary>
         /// <returns></returns>
-        public Task<string?> GetTitle(GetTitleDetails details) => JSRef!.CallAsync<string?>("getTitle", details);
+        public Task<string?> GetTitle(GetTitleDetails details) => JSRef!.CallAsync<GetTitleDetails, string?>("getTitle", details);
         /// <summary>
         /// Sets the browser action's icon.
         /// </summary>
@@ -38,7 +38,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// </summary>
         /// <param name="details"></param>
         /// <returns></returns>
-        public Task<string?> GetPopup(GetPopupDetails details) => JSRef!.CallAsync<string?>("getPopup", details);
+        public Task<string?> GetPopup(GetPopupDetails details) => JSRef!.CallAsync<GetPopupDetails, string?>("getPopup", details);
         /// <summary>
         /// Open the browser action's popup.
         /// </summary>
@@ -56,7 +56,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// </summary>
         /// <param name="details"></param>
         /// <returns></returns>
-        public Task<string?> GetBadgeText(GetBadgeTextDetails details) => JSRef!.CallAsync<string?>("getBadgeText", details);
+        public Task<string?> GetBadgeText(GetBadgeTextDetails details) => JSRef!.CallAsync<GetBadgeTextDetails, string?>("getBadgeText", details);
         /// <summary>
         /// Sets the badge's background color.
         /// </summary>
@@ -68,7 +68,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// </summary>
         /// <param name="details"></param>
         /// <returns></returns>
-        public Task<int[]?> GetBadgeBackgroundColor(GetBadgeBackgroundColorDetails details) => JSRef!.CallAsync<int[]?>("getBadgeBackgroundColor", details);
+        public Task<int[]?> GetBadgeBackgroundColor(GetBadgeBackgroundColorDetails details) => JSRef!.CallAsync<GetBadgeBackgroundColorDetails, int[]?>("getBadgeBackgroundColor", details);
         /// <summary>
         /// Sets the badge's text color.
         /// </summary>
@@ -80,7 +80,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// </summary>
         /// <param name="details"></param>
         /// <returns></returns>
-        public Task<int[]?> GetBadgeTextColor(GetBadgeTextColorDetails details) => JSRef!.CallAsync<int[]?>("getBadgeTextColor", details);
+        public Task<int[]?> GetBadgeTextColor(GetBadgeTextColorDetails details) => JSRef!.CallAsync<GetBadgeTextColorDetails, int[]?>("getBadgeTextColor", details);
         /// <summary>
         /// Gets the user-specified settings for the browser action.
         /// </summary>
@@ -109,7 +109,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// </summary>
         /// <param name="details"></param>
         /// <returns></returns>
-        public Task<bool> IsEnabled(IsEnabledDetails details) => JSRef!.CallAsync<bool>("isEnabled", details);
+        public Task<bool> IsEnabled(IsEnabledDetails details) => JSRef!.CallAsync<IsEnabledDetails, bool>("isEnabled", details);
         /// <summary>
         /// Fired when a browser action icon is clicked. This event will not fire if the browser action has a popup.
         /// </summary>

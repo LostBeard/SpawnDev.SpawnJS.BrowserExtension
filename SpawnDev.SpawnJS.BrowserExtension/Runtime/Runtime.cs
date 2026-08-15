@@ -40,7 +40,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public string GetURL(string path) => JSRef!.Call<string>("getURL", path);
+        public string GetURL(string path) => JSRef!.Call<string, string>("getURL", path);
         /// <summary>
         /// Gets the complete manifest.json file, serialized as an object.
         /// </summary>
@@ -60,20 +60,20 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// </summary>
         /// <param name="connectInfo"></param>
         /// <returns></returns>
-        public Port Connect(ConnectInfo connectInfo) => JSRef!.Call<Port>("connect", connectInfo);
+        public Port Connect(ConnectInfo connectInfo) => JSRef!.Call<ConnectInfo, Port>("connect", connectInfo);
         /// <summary>
         /// Establishes a connection from a content script to the main extension process, or from one extension to a different extension.
         /// </summary>
         /// <param name="extensionId"></param>
         /// <returns></returns>
-        public Port Connect(string extensionId) => JSRef!.Call<Port>("connect", extensionId);
+        public Port Connect(string extensionId) => JSRef!.Call<string, Port>("connect", extensionId);
         /// <summary>
         /// Establishes a connection from a content script to the main extension process, or from one extension to a different extension.
         /// </summary>
         /// <param name="extensionId"></param>
         /// <param name="connectInfo"></param>
         /// <returns></returns>
-        public Port Connect(string extensionId, ConnectInfo connectInfo) => JSRef!.Call<Port>("connect", extensionId, connectInfo);
+        public Port Connect(string extensionId, ConnectInfo connectInfo) => JSRef!.Call<string, ConnectInfo, Port>("connect", extensionId, connectInfo);
         /// <summary>
         /// Sends a single message to event listeners within your extension or a different extension. Similar to runtime.connect but only sends a single message, with an optional response.
         /// </summary>
@@ -93,7 +93,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// <typeparam name="T"></typeparam>
         /// <param name="message"></param>
         /// <returns></returns>
-        public Task<T> SendMessage<T>(object message) => JSRef!.CallAsync<T>("sendMessage", message);
+        public Task<T> SendMessage<T>(object message) => JSRef!.CallAsync<object, T>("sendMessage", message);
         /// <summary>
         /// Sends a single message to event listeners within your extension or a different extension. Similar to runtime.connect but only sends a single message, with an optional response.
         /// </summary>
@@ -101,7 +101,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// <param name="extensionId"></param>
         /// <param name="message"></param>
         /// <returns></returns>
-        public Task<T> SendMessage<T>(string extensionId, object message) => JSRef!.CallAsync<T>("sendMessage", extensionId, message);
+        public Task<T> SendMessage<T>(string extensionId, object message) => JSRef!.CallAsync<string, object, T>("sendMessage", extensionId, message);
         #endregion
         #region Events
         /// <summary>

@@ -1,4 +1,6 @@
-﻿using Microsoft.JSInterop;
+﻿
+
+using SpawnDev.SpawnJS.Events;
 
 namespace SpawnDev.SpawnJS.BrowserExtension
 {
@@ -21,7 +23,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// </summary>
         /// <param name="callback"></param>
         /// <returns></returns>
-        public bool HasListener(Callback callback) => JSRef!.Call<bool>("hasListener", callback);
+        public bool HasListener(Callback callback) => JSRef!.Call<Callback, bool>("hasListener", callback);
         /// <summary>
         /// Adds a listener to this event.
         /// </summary>

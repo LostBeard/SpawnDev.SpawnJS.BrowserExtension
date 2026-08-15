@@ -10,7 +10,7 @@
         /// </summary>
         /// <param name="_this"></param>
         /// <returns></returns>
-        public static bool IsWrappedObject(this SpawnJSObject _this) => !_this.JSRef!.IsUndefined("__wrappedObjectRelease");
+        public static bool IsWrappedObject(this SpawnJSObject _this) => _this.JSRef!.Has("__wrappedObjectRelease");
         /// <summary>
         /// Releases the object on the main content side
         /// </summary>

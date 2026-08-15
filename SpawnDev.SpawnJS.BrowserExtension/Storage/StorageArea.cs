@@ -1,4 +1,4 @@
-﻿using Microsoft.JSInterop;
+﻿
 
 namespace SpawnDev.SpawnJS.BrowserExtension
 {
@@ -19,7 +19,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// </summary>
         /// <param name="keys"></param>
         /// <returns></returns>
-        public Task<long> GetBytesInUse(params string[] keys) => JSRef!.CallAsync<long>("getBytesInUse", keys);
+        public Task<long> GetBytesInUse(params string[] keys) => JSRef!.CallAsync< string[], long>("getBytesInUse", keys);
         /// <summary>
         /// Removes one or more items from the storage area.
         /// </summary>
@@ -38,7 +38,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         public async Task<List<string>> GetKeys()
         {
             using var all = await JSRef!.CallAsync<SpawnJSObject>("get");
-            var keys = JS.Call<List<string>>("Object.keys", all);
+            var keys = JS.Call<SpawnJSObject, List<string>>("Object.keys", all);
             return keys;
         }
         /// <summary>
@@ -50,20 +50,20 @@ namespace SpawnDev.SpawnJS.BrowserExtension
 
         public async Task<T> Get<T>(string key)
         {
-            using var tmp = await JSRef!.CallAsync<SpawnJSObject?>("get", key);
-            if (tmp == null || tmp.JSRef!.IsUndefined(key)) return default(T);
+            using var tmp = await JSRef!.CallAsync<string, SpawnJSObject?>("get", key);
+            if (tmp == null || !tmp.JSRef!.Has(key)) return default(T)!;
             return tmp.JSRef!.Get<T>(key);
         }
         public async Task<T> Get<T>(string key, T defaultValue)
         {
-            using var tmp = await JSRef!.CallAsync<SpawnJSObject?>("get", key);
-            if (tmp == null || tmp.JSRef!.IsUndefined(key)) return defaultValue;
+            using var tmp = await JSRef!.CallAsync<string, SpawnJSObject?>("get", key);
+            if (tmp == null || !tmp.JSRef!.Has(key)) return defaultValue;
             return tmp.JSRef!.Get<T>(key);
         }
         public async Task<bool> Exists(string key)
         {
-            using var tmp = await JSRef!.CallAsync<SpawnJSObject?>("get", key);
-            return tmp != null && !tmp.JSRef!.IsUndefined(key);
+            using var tmp = await JSRef!.CallAsync<string, SpawnJSObject?>("get", key);
+            return tmp != null && tmp.JSRef!.Has(key);
         }
 
         public Task Set(string key, object value) => JSRef!.CallVoidAsync("set", new Dictionary<string, object> { { key, value } });

@@ -1,4 +1,4 @@
-﻿using Microsoft.JSInterop;
+﻿
 using SpawnDev.SpawnJS.JSObjects;
 
 namespace SpawnDev.SpawnJS.BrowserExtension
@@ -18,14 +18,14 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// </summary>
         /// <param name="createProperties"></param>
         /// <returns>The ID of the newly created item. (number | string)</returns>
-        public SpawnJSObject Create(MenuItemProperties createProperties) => JSRef!.Call<SpawnJSObject>("create", createProperties);
+        public SpawnJSObject Create(MenuItemProperties createProperties) => JSRef!.Call<MenuItemProperties, SpawnJSObject>("create", createProperties);
         /// <summary>
         /// Creates a new context menu item. If an error occurs during creation, it may not be detected until the creation callback fires; details will be in runtime.lastError.
         /// </summary>
         /// <param name="createProperties"></param>
         /// <param name="callback"></param>
         /// <returns>The ID of the newly created item. (number | string)</returns>
-        public SpawnJSObject Create(MenuItemProperties createProperties, ActionCallback callback) => JSRef!.Call<SpawnJSObject>("create", createProperties, callback);
+        public SpawnJSObject Create(MenuItemProperties createProperties, ActionCallback callback) => JSRef!.Call<MenuItemProperties, ActionCallback, SpawnJSObject>("create", createProperties, callback);
         /// <summary>
         /// Removes a context menu item.
         /// </summary>

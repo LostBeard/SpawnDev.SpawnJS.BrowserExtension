@@ -1,4 +1,4 @@
-﻿using Microsoft.JSInterop;
+﻿
 using SpawnDev.SpawnJS.JSObjects;
 using System.Text.Json.Serialization;
 namespace SpawnDev.SpawnJS.BrowserExtension
@@ -28,7 +28,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// Returns the IDs of the disabled rules in a static ruleset.
         /// </summary>
         /// <returns></returns>
-        public Task<int[]> GetDisabledRuleIds(GetDisabledRuleIdsOptions options) => JSRef!.CallAsync<int[]>("getDisabledRuleIds", options);
+        public Task<int[]> GetDisabledRuleIds(GetDisabledRuleIdsOptions options) => JSRef!.CallAsync<GetDisabledRuleIdsOptions, int[]>("getDisabledRuleIds", options);
         /// <summary>
         /// Returns the set of dynamic rules for the extension.
         /// </summary>
@@ -36,7 +36,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// <summary>
         /// Returns the set of dynamic rules for the extension.
         /// </summary>
-        public Task<Array<Rule>> GetDynamicRules(GetRulesFilter filter) => JSRef!.CallAsync<Array<Rule>>("getDynamicRules", filter);
+        public Task<Array<Rule>> GetDynamicRules(GetRulesFilter filter) => JSRef!.CallAsync<GetRulesFilter, Array<Rule>>("getDynamicRules", filter);
         /// <summary>
         /// Returns the IDs for the set of enabled static rulesets.
         /// </summary>
@@ -52,7 +52,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
-        public Task<RulesMatchedDetails> GetMatchedRules(MatchedRulesFilter filter) => JSRef!.CallAsync<RulesMatchedDetails>("getMatchedRules", filter);
+        public Task<RulesMatchedDetails> GetMatchedRules(MatchedRulesFilter filter) => JSRef!.CallAsync<MatchedRulesFilter, RulesMatchedDetails>("getMatchedRules", filter);
         /// <summary>
         /// Returns the set of session rules for the extension.
         /// </summary>
@@ -60,13 +60,13 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// <summary>
         /// Returns the set of session rules for the extension.
         /// </summary>
-        public Task<Array<Rule>> GetSessionRules(GetRulesFilter filter) => JSRef!.CallAsync<Array<Rule>>("getSessionRules", filter);
+        public Task<Array<Rule>> GetSessionRules(GetRulesFilter filter) => JSRef!.CallAsync<GetRulesFilter, Array<Rule>>("getSessionRules", filter);
         /// <summary>
         /// Checks if a regular expression is supported as a declarativeNetRequest.RuleCondition.regexFilter rule condition.
         /// </summary>
         /// <param name="options"></param>
         /// <returns></returns>
-        public Task<IsRegexSupportedResult> IsRegexSupported(RegexOptions options) => JSRef!.CallAsync<IsRegexSupportedResult>("isRegexSupported", options);
+        public Task<IsRegexSupportedResult> IsRegexSupported(RegexOptions options) => JSRef!.CallAsync<RegexOptions, IsRegexSupportedResult>("isRegexSupported", options);
         /// <summary>
         /// Configures how the action count for tabs are handled.
         /// </summary>
@@ -77,7 +77,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// Checks if any of the extension's declarativeNetRequest rules would match a hypothetical request.
         /// </summary>
         /// <returns></returns>
-        public Task<TestMatchOutcomeResult> TestMatchOutcome(TestMatchRequestDetails options) => JSRef!.CallAsync<TestMatchOutcomeResult>("testMatchOutcome", options);
+        public Task<TestMatchOutcomeResult> TestMatchOutcome(TestMatchRequestDetails options) => JSRef!.CallAsync<TestMatchRequestDetails, TestMatchOutcomeResult>("testMatchOutcome", options);
         /// <summary>
         /// Modifies the active set of dynamic rules for the extension.
         /// </summary>
