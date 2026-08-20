@@ -4,8 +4,8 @@
 		<TargetFrameworks>net10.0</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<Version>2.1.4</Version>
-		<PackageReleaseNotes>v2.1.4 - Disable service worker events handlers when running in a browser extension service worker to prevent resume failure.</PackageReleaseNotes>
+		<Version>2.1.5</Version>
+		<PackageReleaseNotes>v2.1.5 - Disable service worker events handlers when running in a browser extension service worker to prevent resume failure.</PackageReleaseNotes>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<EmbedAllSources>true</EmbedAllSources>
@@ -68,7 +68,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="SpawnDev.SpawnJS" Version="2.1.8" />
-		<PackageReference Include="SpawnDev.SpawnJS.WebWorkers" Version="2.1.7" />
+		<PackageReference Include="SpawnDev.SpawnJS.WebWorkers" Version="2.1.8" />
 	</ItemGroup>
 
 	<ItemGroup>
