@@ -11,9 +11,9 @@
 	<ItemGroup>
 		<!-- Direct reference so this WASM app gets the SpawnJS.WebWorkers build targets that produce
 		     main.classic.js (the background service worker loads it via importScripts). -->
-		<PackageReference Include="SpawnDev.SpawnJS.WebWorkers" Version="2.1.3" />
-		<PackageReference Include="SpawnDev.SpawnJS.BrowserExtension" Version="2.1.1" />
-		<PackageReference Include="SpawnDev.SpawnJS.RazorUI" Version="2.1.2" />
+		<PackageReference Include="SpawnDev.SpawnJS.WebWorkers" Version="2.1.4" />
+		<PackageReference Include="SpawnDev.SpawnJS.BrowserExtension" Version="2.1.2" />
+		<PackageReference Include="SpawnDev.SpawnJS.RazorUI" Version="2.1.3" />
 	</ItemGroup>
 
 </Project>
