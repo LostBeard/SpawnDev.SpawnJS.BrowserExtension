@@ -1,4 +1,3 @@
-
 # SpawnDev.SpawnJS.BrowserExtension
 
 [![NuGet](https://img.shields.io/nuget/dt/SpawnDev.SpawnJS.BrowserExtension.svg?label=SpawnDev.SpawnJS.BrowserExtension)](https://www.nuget.org/packages/SpawnDev.SpawnJS.BrowserExtension)
@@ -18,7 +17,6 @@ SpawnDev.SpawnJS.BrowserExtension adds the ability for .Net WASM to run as a web
 - Background suspend/resume compatible for instant resume and power efficiency
 - Direct access to extension [APIs](https://developer.chrome.com/docs/extensions/reference/api) via C#
   - Extension, Runtime, Tabs, Windows, Storage, etc
-
 
 ### Dependencies
 - [SpawnDev.SpawnJS](https://github.com/LostBeard/SpawnDev.SpawnJS) - Enables full access to the Javascript environment, and Javascript class wrapping.
