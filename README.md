@@ -15,6 +15,7 @@ SpawnDev.SpawnJS.BrowserExtension adds the ability for .Net WASM to run as a web
   - Background ServiceWorker (Chrome)
   - Content script
   - Options, Popup, etc
+- Background suspend/resume compatible for instant resume and power efficiency
 - Direct access to extension [APIs](https://developer.chrome.com/docs/extensions/reference/api) via C#
   - Extension, Runtime, Tabs, Windows, Storage, etc
 
