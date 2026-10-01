@@ -1,11 +1,12 @@
 ﻿
 
+using System.Diagnostics.CodeAnalysis;
 namespace SpawnDev.SpawnJS.BrowserExtension
 {
     /// <summary>
     /// Extension event
     /// </summary>
-    public class FuncEvent<TResult> : ExtensionEvent
+    public class FuncEvent<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] TResult> : ExtensionEvent
     {
         /// <summary>
         /// Adds an event handler
@@ -66,7 +67,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
     /// <summary>
     /// Extension event
     /// </summary>
-    public class FuncEvent<T1, TResult> : FuncEvent<TResult>
+    public class FuncEvent<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T1, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] TResult> : FuncEvent<TResult>
     {
         /// <summary>
         /// Adds an event handler
@@ -146,7 +147,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
     /// <summary>
     /// Extension event
     /// </summary>
-    public class FuncEvent<T1, T2, TResult> : FuncEvent<T1, TResult>
+    public class FuncEvent<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T1, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T2, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] TResult> : FuncEvent<T1, TResult>
     {
         /// <summary>
         /// Adds an event handler
@@ -245,7 +246,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
     /// <summary>
     /// Extension event
     /// </summary>
-    public class FuncEvent<T1, T2, T3, TResult> : FuncEvent<T1, T2, TResult>
+    public class FuncEvent<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T1, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T2, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T3, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] TResult> : FuncEvent<T1, T2, TResult>
     {
         /// <summary>
         /// Adds an event handler
@@ -363,7 +364,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
     /// <summary>
     /// Extension event
     /// </summary>
-    public class FuncEvent<T1, T2, T3, T4, TResult> : FuncEvent<T1, T2, T3, TResult>
+    public class FuncEvent<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T1, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T2, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T3, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T4, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] TResult> : FuncEvent<T1, T2, T3, TResult>
     {
         /// <summary>
         /// Adds an event handler

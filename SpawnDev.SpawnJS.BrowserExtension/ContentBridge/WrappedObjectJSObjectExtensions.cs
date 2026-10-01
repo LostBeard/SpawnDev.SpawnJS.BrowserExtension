@@ -1,4 +1,5 @@
-﻿namespace SpawnDev.SpawnJS.BrowserExtension
+﻿using System.Diagnostics.CodeAnalysis;
+namespace SpawnDev.SpawnJS.BrowserExtension
 {
     /// <summary>
     /// Adds a few methods to SpawnJSObject instances that allow them to access the underlying proxy (if one)
@@ -25,7 +26,7 @@
         /// <typeparam name="T"></typeparam>
         /// <param name="_this"></param>
         /// <returns></returns>
-        public static T WrappedObjectDecon<T>(this SpawnJSObject _this) => _this.JSRef!.Call<T>("__wrappedObjectDecon");
+        public static T WrappedObjectDecon<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T>(this SpawnJSObject _this) => _this.JSRef!.Call<T>("__wrappedObjectDecon");
         /// <summary>
         /// Requests an unwrapped (direct) version of the object<br />
         /// This call may fail if the main side prevents the object from being returned
@@ -33,6 +34,6 @@
         /// <typeparam name="T"></typeparam>
         /// <param name="_this"></param>
         /// <returns></returns>
-        public static T WrappedObjectDirect<T>(this SpawnJSObject _this) => _this.JSRef!.Call<T>("__wrappedObjectDirect");
+        public static T WrappedObjectDirect<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T>(this SpawnJSObject _this) => _this.JSRef!.Call<T>("__wrappedObjectDirect");
     }
 }

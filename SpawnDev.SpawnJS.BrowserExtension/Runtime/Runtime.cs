@@ -1,4 +1,5 @@
-﻿using SpawnDev.SpawnJS.JSObjects;
+﻿using System.Diagnostics.CodeAnalysis;
+using SpawnDev.SpawnJS.JSObjects;
 
 namespace SpawnDev.SpawnJS.BrowserExtension
 {
@@ -93,7 +94,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// <typeparam name="T"></typeparam>
         /// <param name="message"></param>
         /// <returns></returns>
-        public Task<T> SendMessage<T>(object message) => JSRef!.CallAsync<object, T>("sendMessage", message);
+        public Task<T> SendMessage<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T>(object message) => JSRef!.CallAsync<object, T>("sendMessage", message);
         /// <summary>
         /// Sends a single message to event listeners within your extension or a different extension. Similar to runtime.connect but only sends a single message, with an optional response.
         /// </summary>
@@ -101,7 +102,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// <param name="extensionId"></param>
         /// <param name="message"></param>
         /// <returns></returns>
-        public Task<T> SendMessage<T>(string extensionId, object message) => JSRef!.CallAsync<string, object, T>("sendMessage", extensionId, message);
+        public Task<T> SendMessage<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T>(string extensionId, object message) => JSRef!.CallAsync<string, object, T>("sendMessage", extensionId, message);
         #endregion
         #region Events
         /// <summary>

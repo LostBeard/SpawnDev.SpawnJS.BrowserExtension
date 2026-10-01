@@ -4,8 +4,8 @@
 		<TargetFrameworks>net10.0</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<Version>2.1.5</Version>
-		<PackageReleaseNotes>v2.1.5 - Disable service worker events handlers when running in a browser extension service worker to prevent resume failure.</PackageReleaseNotes>
+		<Version>2.2.0-local.1</Version>
+		<PackageReleaseNotes>v2.2.0 - SpawnDev.SpawnJS 3.0.0. Trim and NativeAOT safe: IsTrimmable + IsAotCompatible, generic type parameters that reach the SpawnJS marshaller annotated with [DynamicallyAccessedMembers(PublicConstructors)], and IL trim/AOT warnings are build errors.</PackageReleaseNotes>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<EmbedAllSources>true</EmbedAllSources>
@@ -23,6 +23,10 @@
 		<NoPackageAnalysis>true</NoPackageAnalysis>
 		<EnableDefaultCompileItems>true</EnableDefaultCompileItems>
 		<IsPackable>true</IsPackable>
+		<!-- Trim / NativeAOT safe: the analyzers run on every build and any IL2xxx/IL3xxx warning fails it -->
+		<IsTrimmable>true</IsTrimmable>
+		<IsAotCompatible>true</IsAotCompatible>
+		<WarningsAsErrors>$(WarningsAsErrors);IL2026;IL2046;IL2057;IL2060;IL2062;IL2067;IL2070;IL2072;IL2075;IL2077;IL2080;IL2087;IL2090;IL2065;IL2069;IL2073;IL2074;IL2076;IL2078;IL2088;IL2089;IL2091;IL2092;IL2093;IL2094;IL2095;IL2106;IL2111;IL2112;IL2113;IL2114;IL3000;IL3001;IL3002;IL3050;IL3051</WarningsAsErrors>
 		
 		<!-- Serve wwwroot at / -->
 		<StaticWebAssetBasePath Condition="'$(StaticWebAssetBasePath)' == ''">/</StaticWebAssetBasePath>
@@ -67,7 +71,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="SpawnDev.SpawnJS" Version="2.1.8" />
+		<PackageReference Include="SpawnDev.SpawnJS" Version="3.0.0" />
 		<PackageReference Include="SpawnDev.SpawnJS.WebWorkers" Version="2.1.8" />
 	</ItemGroup>
 

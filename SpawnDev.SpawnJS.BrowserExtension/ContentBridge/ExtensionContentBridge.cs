@@ -1,4 +1,5 @@
 ﻿
+using System.Diagnostics.CodeAnalysis;
 using SpawnDev.SpawnJS.JSObjects;
 
 namespace SpawnDev.SpawnJS.BrowserExtension
@@ -35,14 +36,14 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// <typeparam name="T"></typeparam>
         /// <param name="identifier"></param>
         /// <returns></returns>
-        public T GetGlobal<T>(string identifier) => JSRef!.Call<string, T>("getGlobal", identifier);
+        public T GetGlobal<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T>(string identifier) => JSRef!.Call<string, T>("getGlobal", identifier);
         /// <summary>
         /// Call a method on the remote scope with a return value of type T
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="identifier"></param>
         /// <returns></returns>
-        public T CallGlobal<T>(string identifier) => JSRef!.Call<string, T>("callGlobal", identifier);
+        public T CallGlobal<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T>(string identifier) => JSRef!.Call<string, T>("callGlobal", identifier);
         /// <summary>
         /// Call a method on the remote scope with no return value
         /// </summary>
@@ -54,7 +55,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// <typeparam name="T"></typeparam>
         /// <param name="identifier"></param>
         /// <returns></returns>
-        public Task<T> CallGlobalAsync<T>(string identifier) => JSRef!.CallAsync<string, T>("callGlobal", identifier);
+        public Task<T> CallGlobalAsync<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T>(string identifier) => JSRef!.CallAsync<string, T>("callGlobal", identifier);
         /// <summary>
         /// Call an async method on the remote scope with no return value
         /// </summary>
@@ -92,7 +93,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// <typeparam name="T"></typeparam>
         /// <param name="node1"></param>
         /// <returns></returns>
-        public T? GetDocumentElementRemote<T>(T node1) where T : Element
+        public T? GetDocumentElementRemote<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T>(T node1) where T : Element
         {
             using var node = node1.JSRefCopy<T>();
             if (node == null) return null;

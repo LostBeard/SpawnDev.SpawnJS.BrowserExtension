@@ -1,5 +1,6 @@
 ﻿
 
+using System.Diagnostics.CodeAnalysis;
 namespace SpawnDev.SpawnJS.BrowserExtension
 {
     /// <summary>
@@ -48,13 +49,13 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// <returns></returns>
         public Task SetAccessLevel(string accessLevel) => JSRef!.CallVoidAsync("setAccessLevel", accessLevel);
 
-        public async Task<T> Get<T>(string key)
+        public async Task<T> Get<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T>(string key)
         {
             using var tmp = await JSRef!.CallAsync<string, SpawnJSObject?>("get", key);
             if (tmp == null || !tmp.JSRef!.Has(key)) return default(T)!;
             return tmp.JSRef!.Get<T>(key);
         }
-        public async Task<T> Get<T>(string key, T defaultValue)
+        public async Task<T> Get<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T>(string key, T defaultValue)
         {
             using var tmp = await JSRef!.CallAsync<string, SpawnJSObject?>("get", key);
             if (tmp == null || !tmp.JSRef!.Has(key)) return defaultValue;

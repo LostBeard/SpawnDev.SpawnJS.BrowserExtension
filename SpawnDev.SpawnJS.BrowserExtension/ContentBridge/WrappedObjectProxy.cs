@@ -1,5 +1,6 @@
 ﻿
 
+using System.Diagnostics.CodeAnalysis;
 namespace SpawnDev.SpawnJS.BrowserExtension
 {
     /// <summary>
@@ -28,14 +29,14 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public T Decon<T>() => JSRef!.Call<T>("__wrappedObjectDecon");
+        public T Decon<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T>() => JSRef!.Call<T>("__wrappedObjectDecon");
         /// <summary>
         /// Returns the remote object as type T<br />
         /// The browser extension environment may block the request, which will cause an exception to be thrown<br />
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public T Direct<T>() => JSRef!.Call<T>("__wrappedObjectDirect");
+        public T Direct<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T>() => JSRef!.Call<T>("__wrappedObjectDirect");
         #endregion
         #region Static Methods
         /// <summary>

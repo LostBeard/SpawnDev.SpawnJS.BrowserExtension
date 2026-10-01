@@ -1,5 +1,6 @@
 ﻿
 
+using System.Diagnostics.CodeAnalysis;
 namespace SpawnDev.SpawnJS.BrowserExtension
 {
     /// <summary>
@@ -67,7 +68,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
     /// <summary>
     /// Extension event
     /// </summary>
-    public class ActionEvent<T1> : ActionEvent
+    public class ActionEvent<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T1> : ActionEvent
     {
         /// <summary>
         /// Adds an event handler
@@ -147,7 +148,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
     /// <summary>
     /// Extension event
     /// </summary>
-    public class ActionEvent<T1, T2> : ActionEvent<T1>
+    public class ActionEvent<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T1, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T2> : ActionEvent<T1>
     {
         /// <summary>
         /// Adds an event handler
@@ -246,7 +247,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
     /// <summary>
     /// Extension event
     /// </summary>
-    public class ActionEvent<T1, T2, T3> : ActionEvent<T1, T2>
+    public class ActionEvent<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T1, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T2, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T3> : ActionEvent<T1, T2>
     {
         /// <summary>
         /// Adds an event handler
@@ -364,7 +365,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
     /// <summary>
     /// Extension event
     /// </summary>
-    public class ActionEvent<T1, T2, T3, T4> : ActionEvent<T1, T2, T3>
+    public class ActionEvent<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T1, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T2, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T3, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T4> : ActionEvent<T1, T2, T3>
     {
         /// <summary>
         /// Adds an event handler
@@ -501,7 +502,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
     /// <summary>
     /// Extension event
     /// </summary>
-    public class ActionEvent<T1, T2, T3, T4, T5> : ActionEvent<T1, T2, T3, T4>
+    public class ActionEvent<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T1, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T2, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T3, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T4, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T5> : ActionEvent<T1, T2, T3, T4>
     {
         /// <summary>
         /// Adds an event handler

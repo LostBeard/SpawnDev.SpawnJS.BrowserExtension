@@ -1,5 +1,6 @@
 ﻿
 
+using System.Diagnostics.CodeAnalysis;
 using SpawnDev.SpawnJS.JSObjects;
 
 namespace SpawnDev.SpawnJS.BrowserExtension
@@ -46,7 +47,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// <param name="tabId"></param>
         /// <param name="message"></param>
         /// <returns></returns>
-        public Task<T> SendMessage<T>(int tabId, object message) => JSRef!.CallAsync<int, object, T>("sendMessage", tabId, message);
+        public Task<T> SendMessage<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T>(int tabId, object message) => JSRef!.CallAsync<int, object, T>("sendMessage", tabId, message);
         /// <summary>
         /// Sends a single message to the content script(s) in the specified tab.
         /// </summary>
@@ -70,7 +71,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// <param name="message"></param>
         /// <param name="options"></param>
         /// <returns></returns>
-        public Task<T> SendMessage<T>(int tabId, object message, TabMessageOptions options) => JSRef!.CallAsync<int, object, TabMessageOptions, T>("sendMessage", tabId, message, options);
+        public Task<T> SendMessage<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T>(int tabId, object message, TabMessageOptions options) => JSRef!.CallAsync<int, object, TabMessageOptions, T>("sendMessage", tabId, message, options);
         /// <summary>
         /// Reload a tab.
         /// </summary>
