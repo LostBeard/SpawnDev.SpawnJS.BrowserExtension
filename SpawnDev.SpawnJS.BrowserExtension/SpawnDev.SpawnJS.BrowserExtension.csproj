@@ -4,7 +4,7 @@
 		<TargetFrameworks>net10.0</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<Version>2.2.0-local.1</Version>
+		<Version>2.2.0</Version>
 		<PackageReleaseNotes>v2.2.0 - SpawnDev.SpawnJS 3.0.0. Trim and NativeAOT safe: IsTrimmable + IsAotCompatible, generic type parameters that reach the SpawnJS marshaller annotated with [DynamicallyAccessedMembers(PublicConstructors)], and IL trim/AOT warnings are build errors.</PackageReleaseNotes>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -72,7 +72,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="SpawnDev.SpawnJS" Version="3.0.0" />
-		<PackageReference Include="SpawnDev.SpawnJS.WebWorkers" Version="2.1.8" />
+		<PackageReference Include="SpawnDev.SpawnJS.WebWorkers" Version="2.2.1" />
 	</ItemGroup>
 
 	<ItemGroup>
