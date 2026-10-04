@@ -138,7 +138,12 @@ namespace SpawnDev.SpawnJS.BrowserExtension.Services
                     pageValue = filename.Substring(0, filename.LastIndexOf(".html"));
                 }
                 // background
-                if (ExtensionScheme && pageValue == "background")
+                // Firefox: a "background.page" of background.html, OR the page Firefox GENERATES for "background.scripts"
+                // (_generated_background_page.html, per MDN runtime.MessageSender.url). Only the first was recognized,
+                // so a scripts-based Firefox background ran as an extension PAGE: its background services (runtime
+                // listeners, onInstalled work) never started. Found 2026-10-04 in Anaglyphohol (its install-time
+                // warm-up never ran on Firefox); this library's own demo and Gemineachy use "scripts" too.
+                if (ExtensionScheme && (pageValue == "background" || pageValue == "_generated_background_page"))
                 {
                     // Background page - Firefox
                     ret = ExtensionMode.Background;
