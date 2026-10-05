@@ -4,8 +4,8 @@
 		<TargetFrameworks>net10.0</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<Version>2.2.1-local.2</Version>
-		<PackageReleaseNotes>v2.2.0 - SpawnDev.SpawnJS 3.0.0. Trim and NativeAOT safe: IsTrimmable + IsAotCompatible, generic type parameters that reach the SpawnJS marshaller annotated with [DynamicallyAccessedMembers(PublicConstructors)], and IL trim/AOT warnings are build errors.</PackageReleaseNotes>
+		<Version>2.2.1</Version>
+		<PackageReleaseNotes>v2.2.1 - SpawnDev.SpawnJS 3.0.1. Firefox: a "background.scripts" background now runs as the BACKGROUND. GetExtensionMode recognized a Firefox background only by a page named background.html, but Firefox runs a scripts-based background in the page it generates (_generated_background_page.html), so it was taken for an extension page and its background services (runtime listeners such as onInstalled / onMessage) never started. An app that references SpawnDev.SpawnJS 3.0.0 directly gets NU1605 (downgrade): move it to 3.0.1.</PackageReleaseNotes>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<EmbedAllSources>true</EmbedAllSources>
@@ -71,7 +71,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="SpawnDev.SpawnJS" Version="3.0.0" />
+		<PackageReference Include="SpawnDev.SpawnJS" Version="3.0.1" />
 		<PackageReference Include="SpawnDev.SpawnJS.WebWorkers" Version="2.2.1" />
 	</ItemGroup>
 
