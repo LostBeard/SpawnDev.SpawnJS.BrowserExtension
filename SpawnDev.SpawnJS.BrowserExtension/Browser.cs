@@ -33,5 +33,10 @@
         /// Context menus
         /// </summary>
         public ContextMenus ContextMenus => JSRef!.Get<ContextMenus>("contextMenus");
+        /// <summary>
+        /// Chrome only: the extension's offscreen document (a windowless extension page). Null where the API does not
+        /// exist (Firefox) or the "offscreen" permission is missing.
+        /// </summary>
+        public Offscreen? Offscreen => JSRef!.Get<Offscreen?>("offscreen");
     }
 }
