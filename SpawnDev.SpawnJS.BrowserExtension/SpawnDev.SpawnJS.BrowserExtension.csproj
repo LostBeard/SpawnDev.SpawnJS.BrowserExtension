@@ -4,8 +4,8 @@
 		<TargetFrameworks>net10.0</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<Version>2.2.2</Version>
-		<PackageReleaseNotes>v2.2.2 - Browser.Offscreen (Chrome chrome.offscreen: CreateDocument / CloseDocument / HasDocument). ExtensionPortService: a content script gets a MessagePort to the extension background (transferables: ImageBitmap, ArrayBuffer, VideoFrame), handed over with a single-use token through the library bridge page. Verified on Chrome (content script - service worker - offscreen document); the Firefox path (background page) is written but not yet verified. On SpawnDev.SpawnJS 3.0.2.</PackageReleaseNotes>
+		<Version>2.2.3</Version>
+		<PackageReleaseNotes>v2.2.3 - Dependency update: SpawnDev.SpawnJS.WebWorkers 2.2.1 -> 2.2.4. An extension that references only this package now gets main.classic.js / main.module.js through WebWorkers buildTransitive targets (before 2.2.4 an indirect consumer silently got no bundle, so the background service worker importScripts(main.classic.js) 404ed), and a Blazor-SDK extension no longer needs SpawnJSWebWorkersBlazor=false. Includes WebWorkers 2.2.2 ServiceWorker fixes: a .NET ServiceWorker starts offline from Cache Storage, and held events are released if .NET fails to start. Fixed: StorageChange&lt;T&gt;.OldValue() / NewValue() use the class T (they declared their own T, which shadowed it, so callers had to write OldValue&lt;T&gt;(); source-breaking only for that form). Doc and nullability fixes.</PackageReleaseNotes>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<EmbedAllSources>true</EmbedAllSources>
@@ -72,7 +72,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="SpawnDev.SpawnJS" Version="3.0.2" />
-		<PackageReference Include="SpawnDev.SpawnJS.WebWorkers" Version="2.2.1" />
+		<PackageReference Include="SpawnDev.SpawnJS.WebWorkers" Version="2.2.4" />
 	</ItemGroup>
 
 	<ItemGroup>

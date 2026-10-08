@@ -12,7 +12,7 @@ namespace SpawnDev.SpawnJS.BrowserExtension
     {
         /// <summary>
         /// The color, specified as one of:<br/>
-        /// - a string: any CSS <color> value, for example "red", "#FF0000", or "rgb(255 0 0)". If the string is not a valid color, the returned promise will be rejected and the text color won't be altered.<br/>
+        /// - a string: any CSS &lt;color&gt; value, for example "red", "#FF0000", or "rgb(255 0 0)". If the string is not a valid color, the returned promise will be rejected and the text color won't be altered.<br/>
         /// - a action.ColorArray object.<br/>
         /// - null. If a tabId is specified, it removes the tab-specific badge text color so that the tab inherits the global badge text color. Otherwise it reverts the global badge text color to the default value.<br/>
         /// </summary>

@@ -58,7 +58,6 @@ namespace SpawnDev.SpawnJS.BrowserExtension
         /// <summary>
         /// Sends a single message to the content script(s) in the specified tab.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="tabId"></param>
         /// <param name="message"></param>
         /// <param name="options"></param>

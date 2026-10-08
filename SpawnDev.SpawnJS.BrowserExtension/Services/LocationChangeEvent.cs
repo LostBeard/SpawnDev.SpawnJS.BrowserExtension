@@ -16,6 +16,6 @@ namespace SpawnDev.SpawnJS.BrowserExtension.Services
         /// <summary>
         /// The new location
         /// </summary>
-        public string Detail => JSRef.Get<string>("detail");
+        public string Detail => JSRef!.Get<string>("detail");
     }
 }
