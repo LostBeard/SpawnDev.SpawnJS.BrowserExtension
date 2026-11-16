@@ -4,8 +4,8 @@
 		<TargetFrameworks>net10.0</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<Version>2.2.4</Version>
-		<PackageReleaseNotes>v2.2.4 - Dependency update: SpawnDev.SpawnJS 3.0.2 -> 3.0.5 and SpawnDev.SpawnJS.WebWorkers 2.2.4 -> 2.2.5. SpawnJS 3.0.5 fixes JSTape allocating memory quadratic in the size of a big call (a big message to a worker or port could run the browser out of memory); 3.0.4 reads records and constructor-only classes; 3.0.3 adds HTMLTextAreaElement and renames GPUVertexFormat.nt16x4 to UInt16x4. No change of its own.</PackageReleaseNotes>
+		<Version>2.2.5</Version>
+		<PackageReleaseNotes>v2.2.5 - Dependency update: SpawnDev.SpawnJS 3.0.5 -> 3.0.10 (WebAuthn JSON converters, trimmed apps about 630 KB smaller) and SpawnDev.SpawnJS.WebWorkers 2.2.5 -> 2.2.6. No change of its own. v2.2.4 - Dependency update: SpawnDev.SpawnJS 3.0.2 -> 3.0.5 and SpawnDev.SpawnJS.WebWorkers 2.2.4 -> 2.2.5. SpawnJS 3.0.5 fixes JSTape allocating memory quadratic in the size of a big call (a big message to a worker or port could run the browser out of memory); 3.0.4 reads records and constructor-only classes; 3.0.3 adds HTMLTextAreaElement and renames GPUVertexFormat.nt16x4 to UInt16x4. No change of its own.</PackageReleaseNotes>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<EmbedAllSources>true</EmbedAllSources>
@@ -71,8 +71,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="SpawnDev.SpawnJS" Version="3.0.5" />
-		<PackageReference Include="SpawnDev.SpawnJS.WebWorkers" Version="2.2.5" />
+		<PackageReference Include="SpawnDev.SpawnJS" Version="3.0.10" />
+		<PackageReference Include="SpawnDev.SpawnJS.WebWorkers" Version="2.2.6" />
 	</ItemGroup>
 
 	<ItemGroup>
